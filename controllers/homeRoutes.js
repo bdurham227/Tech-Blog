@@ -71,6 +71,16 @@ router.get('/login', async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
+});
+
+//if not logged in redirect to signup page
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 })
 
 

@@ -101,10 +101,11 @@ router.post('/login', async (req, res) => {
         req.session.user_id = userData.id;
         req.session.email = userData.email;
         req.session.logged_in = true;
-        console.log(userData);
+        
         res.json({ user: userData, message: 'You are now logged in' });
-    })
-
+    });
+  
+    console.log(userData);
 
   } catch (err) {
     res.status(500).json(err)
