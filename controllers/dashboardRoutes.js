@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
     //pass serialized data into template
     res.render('dashboard', {
       posts,
-      // logged_in: true
+      logged_in: true
     });
 
   } catch (err) {
@@ -90,7 +90,8 @@ router.get('/create/', async (req, res) => {
 
     //res.render create post template
     res.render('create-post', {
-      post
+      post,
+      logged_in: true,
     })
 
 

@@ -33,6 +33,10 @@ router.get('/:id', async (req, res) => {
           model: Post,
           attributes: ["id", "post_title", "post_content", "date_created"],
         },
+        {
+          model: Comment,
+          attributes: ["id", "comment_body"],
+        }
       ],
     });
 
@@ -40,13 +44,8 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: `No User with ID of ${req.params.id} found!` });
       return;
     }
-
-
     const user = userData.get({ plain: true });
-
     res.status(200).json(user);
-
-
   } catch (err) {
     res.status(500).json(err)
   }
@@ -67,8 +66,10 @@ router.post('/', async (req, res) => {
       req.session.username = userData.username;
       req.session.email = userData.email;
       req.session.logged_in = true;
+
+      res.status(200).json(userData);
     });
-    res.status(200).json(userData);
+   
 
 
   } catch (err) {

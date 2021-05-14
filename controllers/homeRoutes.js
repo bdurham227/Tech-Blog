@@ -24,7 +24,8 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('homepage', {
-      posts
+      posts,
+      logged_in: req.session.logged_in
     });
     
   } catch (err) {
@@ -55,7 +56,8 @@ router.get('/post/:id', async (req, res) => {
     const posts = postData.get({ plain: true });
 
     res.render('post', {
-      posts
+      posts,
+      logged_in: req.session.logged_in,
     });
 
 
