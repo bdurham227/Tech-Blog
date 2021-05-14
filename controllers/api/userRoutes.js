@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
 
     //serialize data
     const users = userData.map((user) => user.get({ plain: true }));
+   
 
     res.status(200).json(users);
 
@@ -80,12 +81,12 @@ router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
-        email: req.params.email,
+        email: req.body.email,
       },
     });
 
     if (!userData) {
-      res.status(404).json({ message: `No User with ID of ${req.params.id} found!` });
+      res.status(404).json({ message: `No User with that email or password found!` });
       return;
     }
     const validPassword = await userData.checkPassword(req.body.password);
@@ -99,7 +100,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
         req.session.user_id = userData.id;
-        req.session.email = userData.email;
+        req.session.email = userData.email; 
         req.session.logged_in = true;
         
         res.json({ user: userData, message: 'You are now logged in' });
