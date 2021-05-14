@@ -63,7 +63,68 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
-})
+});
+
+
+//create post
+router.post('/', async (req, res) => {
+  try {
+    const postData = await Post.create({
+      post_title: req.body.post_title,
+      post_content: req.body.post_content,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(postData);
+
+  } catch (err) {
+    res.status(500).json(err)
+  }
+ });
+
+ //update post
+ router.put('/:id', async (req, res) => {
+   try {
+    const postData = await Post.update({
+      where: {
+        id: req.params.id,
+      },
+      post_title: req.body.post_title,
+      post_content: req.body.post_content,
+    });
+
+    if(!postData) {
+      res.status(404).json({ message: `No Post with the ID ${req.params.id} found!` });
+      return;
+    }
+
+    res.status(200).json(postData)
+
+   } catch (err) {
+     res.status(500).json(err)
+   }
+ });
+
+ //delete post
+ router.delete('/:id', async (req, res) => {
+   try {
+      const postData = await Post.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      if (!postData) {
+        res.status(404).json({ message: `No Post with the ID ${req.params.id} found!` });
+        return;
+      }
+
+      res.status(204).json(postData);
+
+   } catch (err) {
+     res.status(500).json(err)
+   }
+ })
 
 
 
