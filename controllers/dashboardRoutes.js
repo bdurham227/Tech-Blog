@@ -5,9 +5,9 @@ const { User, Post, Comment } = require('../models');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      // where: {
-      //   user_id: req.session.user_id,
-      // },
+      where: {
+        user_id: req.session.user_id,
+      },
       attributes: ["id", "post_title", "post_content", "date_created"],
       include: [
         {
@@ -90,7 +90,7 @@ router.get('/create/', async (req, res) => {
 
     //res.render create post template
     res.render('create-post', {
-      posts
+      post
     })
 
 

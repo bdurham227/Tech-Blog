@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 
 
 
@@ -13,6 +13,10 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ["username"],
         },
+        {
+          model: Comment,
+          attributes: ["id", "comment_body"]
+        }
       ],
     });
 
@@ -41,6 +45,10 @@ router.get('/post/:id', async (req, res) => {
           model: User,
           attributes: ["username"],
         },
+        {
+          model: Comment,
+          attributes: ["comment_body"],
+        }
       ],
     });
 
