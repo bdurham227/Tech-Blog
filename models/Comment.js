@@ -12,14 +12,11 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        comment_body: {
-            type:DataTypes.STRING,
-            allowNull: false,
-        },
-        date_created:{ 
-            type:DataTypes.DATE,
-            allowNull: false,
-        },
+      
+        // date_created:{ 
+        //     type:DataTypes.DATE,
+        //     allowNull: false,
+        // },
         post_id: {
             type:DataTypes.INTEGER,
             allowNull: false,
@@ -35,6 +32,10 @@ Comment.init(
                 model: 'user',
                 key: 'id',
             },
+        },
+        comment_body: {
+            type:DataTypes.STRING,
+            allowNull: false,
         },
     },
     {
