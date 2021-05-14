@@ -16,20 +16,20 @@ const PORT = process.env.PORT || 3008;
 //create new environment instance of handlebars
 const hbs = exphbs.create({ helpers });
 
-//create session
-// const sess = {
-//   secret: 'Super secret secret',
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize
-//   })
-// };
+// create session
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
 
 
-// //middleware
-// app.use(session(sess));
+//middleware
+app.use(session(sess));
 
 //setup handlebars view engine
 app.engine('handlebars', hbs.engine);
