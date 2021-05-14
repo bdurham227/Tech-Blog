@@ -58,8 +58,13 @@ router.get('/edit/:id', async (req, res) => {
       res.status(404).json({ message: `No Post with the ID ${req.params.id} found` });
       return;
     }
+    const post = postData.get({ plain: true });
 
     //created render post and handlebars template
+    res.render('edit-post', {
+      post,
+      logged_in: true,
+    })
 
   } catch (err) {
     res.status(500).json(err)
@@ -98,7 +103,7 @@ router.get('/create/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
-})
+});
 
 
 
