@@ -22,8 +22,10 @@ router.get('/', async (req, res) => {
 
     //serialize data so template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts);
 
     res.render('homepage', {
+     
       posts,
       logged_in: req.session.logged_in
     });
@@ -48,7 +50,7 @@ router.get('/post/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ["comment_body"],
+          attributes: ["id", "comment_body"],
         }
       ],
     });

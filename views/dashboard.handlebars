@@ -1,7 +1,9 @@
 <div class="mb-5 pt-3">
-  <a href="/dashboard/create/"><button id="create-post" class="btn btn-primary">New Post </button></a>
+  
 
 <h2 class="title pb-4">Dashboard: Your Posts</h2>
+<a href="/dashboard/create/"><button id="create-post" class="btn btn-primary">New Post </button></a>
+<a href="/dashboard/edit/{{post.id}}"><button class="btn mb-5">Edit Post</button></a>
 
 {{#if posts.length}}
 
@@ -11,7 +13,6 @@
 {{> post-details post}}
 
 
-<a href="/dashboard/edit/{{post.id}}"><button class="btn mb-5">Edit Post</button></a>
 
 {{/each}}
 
@@ -20,3 +21,5 @@
 <h5 class="pb-4 text-centered">You haven't posted anything!</h5>
 
 {{/if}}
+
+<script src="/js/createPost.js"></script>
