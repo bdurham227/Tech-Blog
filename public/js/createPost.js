@@ -4,6 +4,7 @@ const newFormHandler = async (event) => {
   const postTitle = document.querySelector('#post-title').value.trim();
   const postContent = document.querySelector('#post-content').value.trim();
 
+  if (postTitle && postContent) {
   const response = await fetch('/api/post', {
     method: 'POST',
     body: JSON.stringify({ postTitle, postContent }),
@@ -15,6 +16,7 @@ const newFormHandler = async (event) => {
   } else {
     alert(response.statusText);
   }
+}
 };
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);

@@ -1,6 +1,7 @@
 const { Post, User, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 
 
 //get all 
@@ -67,14 +68,15 @@ router.get('/:id', async (req, res) => {
 
 
 //create post
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.create({
-      post_title: req.body.post_title,
-      post_content: req.body.post_content,
+      // post_title: req.body.post_title,
+      // post_content: req.body.post_content,
+      ...req.body,
       user_id: req.session.user_id,
     });
-
+    console.log(postData);
     res.status(200).json(postData);
 
   } catch (err) {
