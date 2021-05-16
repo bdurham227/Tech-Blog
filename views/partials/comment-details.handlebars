@@ -1,9 +1,11 @@
 
 <div class="card">
-
-  <div class="card-header">{{username}}
+{{#each this}}
+  <div class="card-header">{{user.username}}
     
-<h2>{{comment_body}}</h2>
+<div class="card-body">
+  {{comment.comment_body}}
 </div>
-
+</div>
+{{/each}}
   </div>

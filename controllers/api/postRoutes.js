@@ -18,6 +18,10 @@ router.get('/', async (req, res) => {
         {
           model: Comment,
           attributes: ["id", "post_id", "user_id", "comment_body"],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
         },
       ],
     });
@@ -47,6 +51,10 @@ router.get('/:id', async (req, res) => {
         {
           model: Comment,
           attributes: ["id", "post_id", "user_id", "comment_body"],
+          include: {
+            model: User,
+            attributes: ["username"],
+          }
         },
       ],
     });
@@ -71,9 +79,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.create({
-      // post_title: req.body.post_title,
-      // post_content: req.body.post_content,
-      ...req.body,
+      post_title: req.body.post_title,
+      post_content: req.body.post_content,
       user_id: req.session.user_id,
     });
     console.log(postData);

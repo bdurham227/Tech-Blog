@@ -5,6 +5,13 @@ module.exports = {
           // We add five years to the 'year' value to calculate the end date
           new Date(date).getFullYear()
         }`;
+  },
+  format_plural: (word, amount) => {
+    if (amount !== 1) {
+      return `${word}s`;
+    }
+
+    return word;
   }
 
 

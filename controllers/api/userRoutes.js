@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
-
+// const session = require('express-session');
+// const withAuth = require('../../utils/auth');
 
 
 //get all users
@@ -35,7 +36,11 @@ router.get('/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ["id", "comment_body"],
+          attributes: ["id", "user_id", "post_id", "comment_body"],
+          include: {
+            model: Post,
+            attributes: ["post_title"],
+          }
         }
       ],
     });
@@ -64,7 +69,7 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.username = userData.username;
-      req.session.email = userData.email;
+      // req.session.email = userData.email;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -104,6 +109,7 @@ router.post('/login', async (req, res) => {
         req.session.email = userData.email; 
         req.session.logged_in = true;
         console.log(userData)
+
         res.json({ user: userData, message: 'You are now logged in' });
        
     });

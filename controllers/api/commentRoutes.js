@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 //get all comments
@@ -16,15 +17,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     
     const commentData = await Comment.create({
       comment_body: req.body.comment_body,
       post_id: req.body.post_id,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
     });
-
+    console.log(commentData);
     res.status(200).json(commentData);
 
 
