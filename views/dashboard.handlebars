@@ -1,6 +1,6 @@
 <div class="mb-5 pt-3">
   
-
+{{#if logged_in}}
 <h2 class="title pb-4">Dashboard: Your Posts</h2>
 <a href="/dashboard/create/"><button id="create-post" class="btn btn-primary">New Post</button></a>
 
@@ -21,6 +21,6 @@
 <h5 class="pb-4 text-centered">You haven't posted anything!</h5>
 
 {{/if}}
-
+{{/if}}
 <script src="/js/createPost.js"></script>
 <script src="/js/editPost.js"></script>

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
     //serialize data
     const users = userData.map((user) => user.get({ plain: true }));
-   
+    console.log(users);
 
     res.status(200).json(users);
 
@@ -68,7 +68,7 @@ router.post('/', async (req, res) => {
     });
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.username = userData.username;
+      // req.session.username = userData.username;
       // req.session.email = userData.email;
       req.session.logged_in = true;
 
@@ -90,6 +90,7 @@ router.post('/login', async (req, res) => {
         email: req.body.email,
       },
     });
+    
 
     if (!userData) {
       res.status(404).json({ message: `No User with that email or password found!` });
@@ -103,7 +104,7 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect Email or Password, please try again' });
         return;
     }
-
+   
     req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.email = userData.email; 

@@ -17,7 +17,7 @@ router.get('/', withAuth, async (req, res) => {
           attributes: ["id", "post_id", "user_id", "comment_body"],
           include: {
             model: User,
-            attributes: ["username"],
+            attributes: ["id", "username"],
           }
         },
         {
@@ -27,11 +27,14 @@ router.get('/', withAuth, async (req, res) => {
       ],
     });
     //serialize data
-    const posts = postData.map((post) => post.get({ plain: true }));
+    // const posts = postData.map((post) => post.get({ plain: true }));
+    const posts = postData.map(post => post.get({ plain: true }));
+    console.log(posts);
 
     //pass serialized data into template
     res.render('dashboard', {
       posts,
+      user_id: posts.user_id,
       logged_in: true
     });
 
