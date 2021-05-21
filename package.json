@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "seed": "node seeds/seedAll.js"
   },
   "repository": {
@@ -29,8 +29,7 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
   },
-  "devDependencies": 
-  {
+  "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.1.2"
