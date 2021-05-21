@@ -11,7 +11,7 @@
 
 {{#each posts as |post|}}
 {{> post-details post}}
-<a href="/dashboard/edit/"><button class="btn mb-5">Edit Post</button></a>
+<a href="/dashboard/edit/{{post.id}}"><button class="btn mb-5">Edit Post</button></a>
 
 
 {{/each}}

@@ -5,7 +5,7 @@
       On: {{format_date date_created}}</p>
   </div>
  
-    <p class="card-text">{{post_content}}</p>
+    <p class="card-text" data-id="{{posts.user_id}}">{{post_content}}</p>
     <br>
     <hr>
     <span style="float:right">{{comments.length}} {{format_plural "comment" comments.length}}</span>

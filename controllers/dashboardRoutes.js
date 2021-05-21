@@ -4,7 +4,7 @@ const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 //get all
-router.get('/', withAuth, async (req, res) => {
+router.get('/',  async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
@@ -44,27 +44,27 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 //edit
-router.get('/edit/:id', withAuth, async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: {
-        id: req.params.id,
+        id: req.session.user_id,
       },
-      attributes: ["id", "post_title", "post_content", "date_created"],
-      include: [
-        {
-          model: Comment,
-          attributes: ["id", "post_id", "user_id", "comment_body"],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
-        {
-          model: User,
-          attributes: ["username"],
-        }
-      ]
+      // attributes: ["id", "post_title", "post_content", "date_created"],
+      // include: [
+      //   {
+      //     model: Comment,
+      //     attributes: ["id", "post_id", "user_id", "comment_body"],
+      //     // include: {
+      //     //   model: User,
+      //     //   attributes: ["username"],
+      //     // },
+      //   },
+      //   {
+      //     model: User,
+      //     attributes: ["username"],
+      //   }
+      // ]
     });
 
     if (!postData) {
@@ -118,6 +118,8 @@ router.get('/create/', async (req, res) => {
     res.status(500).json(err)
   }
 });
+
+
 
 
 
