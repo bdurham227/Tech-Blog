@@ -77,7 +77,8 @@ Screenshot of Application:
 
 ![Screenshot](public/images/tbsignup.png)
 
-
+Visit Heroku Deploy:
+[Heroku]** **
 
 Visit the Repo: 
 [Github]**<https://github.com/bdurham227/Tech-Blog>**
