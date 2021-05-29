@@ -11,6 +11,7 @@ if (email && password) {
     body: JSON.stringify({ email, password }),
     headers: { 'Content-Type': 'application/json' },
   });
+  console.log('inside login js')
 if (response.ok) {
   document.location.replace('/dashboard')
 } else {

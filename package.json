@@ -1,11 +1,11 @@
 {
   "name": "tech-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![License MIT](https://img.shields.io/apm/l/pack)](https://spdx.org/licenses/MIT.html)  ## Table of Contents 1. [Description](#description)",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bdurham227/Tech-Blog#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcrypt-nodejs": "^0.0.3",
     "connect-session-sequelize": "^7.1.1",
     "dotenv": "^9.0.2",
