@@ -1,10 +1,25 @@
 
-{{>post-details posts}}
+{{> post-details posts}}
 
 <!--will add partial for comments -->
+{{#if logged_in}}
+ <form class="comment-form">
+    <div>
+      <textarea class="ml-5" name="comment-body"></textarea>
+    </div>
+
+    <div>
+      <button class="button is-warning ml-5 mb-5" type="submit">Add Comment</button>
+    </div>
+  </form>
+{{/if}}
+
+{{> comment-details comments}}
+
+{{#if logged_in}}
+<script src="/js/comment.js"></script>
+ {{/if}}
 
 
 
 
-
-<script src="/js/dashboard.js"></script>

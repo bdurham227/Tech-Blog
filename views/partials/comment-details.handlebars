@@ -1,10 +1,14 @@
+<div class="comments">
+  {{#each this}}
+    <h5>{{User.username}}</h5>
+    <div class="text">
+      <p> {{comment_body}} </p>
+    </div>
+   
+</div>
 
-
-{{#each this}}
- <h5>{{user.username}}</h5>
-    
-<p>  {{comment_body}} </p>
-
-
-
-{{/each}}
+  {{/each}}
+</div>
+{{#if logged_in}}
+<script src="/js/comment.js"></script>
+ {{/if}}
